@@ -33,3 +33,14 @@ module "eks_admins_iam_role" {
     "arn:aws:iam::${module.vpc.vpc_owner_id}:root"
   ]
 }
+
+module "user1_iam_user" {
+  source  = "terraform-aws-modules/iam/aws//modules/iam-user"
+  version = "5.3.1"
+
+  name                          = "test-user"
+  create_iam_access_key         = false
+  create_iam_user_login_profile = false
+
+  force_destroy = true
+}
