@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+namespace: lynx-prod
+metadata:
+  name: devops-lynx-deployment
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: devops-lynx
+  template:
+    metadata:
+      labels:
+        app: devops-lynx
+    spec:
+      containers:
+      - name: devops-lynx
+        image: vvoraprat/devops-lynx-prod:v1.0.0
+        resources:
+          requests:
+            cpu: "1"
